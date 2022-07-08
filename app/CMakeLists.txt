@@ -1,0 +1,5 @@
+cmake_minimum_required(VERSION 3.10)
+set(CMAKE_BUILD_TYPE Debug)
+add_library(asan_test SHARED src/main/cpp/mem_leak_test.cpp)
+target_compile_options(asan_test PUBLIC -fsanitize=address -fno-omit-frame-pointer)
+set_target_properties(asan_test PROPERTIES LINK_FLAGS -fsanitize=address)
